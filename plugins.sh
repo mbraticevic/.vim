@@ -14,14 +14,14 @@ bundle_git() {
     echo "$bdir:"
 
     if test -d "bundle/$bdir"; then
-        pushd "bundle/$bdir" > /dev/null
+        cd "bundle/$bdir"
         git pull && git submodule update --init --recursive
-        popd > /dev/null
+        cd - > /dev/null
     else
-        pushd bundle > /dev/null
+        cd bundle
         rm -rf "$bdir"
         git clone --recursive "$1"
-        popd > /dev/null
+        cd - > /dev/null
     fi
 
     echo
