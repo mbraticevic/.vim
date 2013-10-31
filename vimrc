@@ -206,8 +206,7 @@ call SeIndentSoft(4)    " use 4 spaces per indentation level
 augroup Vimrc_indent
   autocmd!
   autocmd FileType vim call SetlIndentSoft(2)
-  autocmd FileType html call SetlIndentSoft(2)
-  autocmd FileType htmldjango call SetlIndentSoft(2)
+  autocmd FileType *html* call SetlIndentSoft(2)
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -261,6 +260,9 @@ set statusline+=%3*%{fugitive#statusline()}%*
 let g:clang_close_preview=1
 let g:clang_use_library=1
 let g:clang_complete_macros=1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" jedi-vim
+let g:jedi#show_call_signatures=0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Jellybeans
 syntax enable
