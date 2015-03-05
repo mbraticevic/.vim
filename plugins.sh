@@ -4,7 +4,7 @@ set -e
 
 mkdir -p bundle
 mkdir -p autoload
-ln -t autoload -sf ../bundle/vim-pathogen/autoload/pathogen.vim
+ln -sf ../bundle/vim-pathogen/autoload/pathogen.vim autoload/pathogen.vim
 
 bdirlist="bundle/.bdirs"
 rm -rf "$bdirlist"
