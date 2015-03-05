@@ -6,11 +6,8 @@ mkdir -p bundle
 mkdir -p autoload
 ln -sf ../bundle/vim-pathogen/autoload/pathogen.vim autoload/pathogen.vim
 
-bdirlist="bundle/.bdirs"
-rm -rf "$bdirlist"
-
 bundle_git() {
-    local bdir=$( echo "$1" | sed 's/.*\/\(.*\)\.git/\1/' | tee -a "$bdirlist" )
+    local bdir=$( echo "$1" | sed 's/.*\/\(.*\)\.git/\1/' )
     echo "$bdir:"
 
     if test -d "bundle/$bdir"; then
@@ -25,10 +22,6 @@ bundle_git() {
     fi
 
     echo
-}
-
-bundle_manual() {
-    echo "$1" >> "$bdirlist"
 }
 
 bundle_git "https://github.com/mileszs/ack.vim.git"
@@ -50,21 +43,3 @@ bundle_git "https://github.com/jistr/vim-nerdtree-tabs.git"
 bundle_git "https://github.com/tpope/vim-pathogen.git"
 bundle_git "https://github.com/tpope/vim-repeat.git"
 bundle_git "https://github.com/tpope/vim-surround.git"
-
-bundle_manual "eclim"   # https://github.com/ervandew/eclim.git
-
-for unused in $( find "bundle" -mindepth 1 -maxdepth 1 -type d -printf "%f\n" | sort "$bdirlist" - | uniq -u ); do
-    if test ! -d "bundle/$unused"; then
-        continue
-    fi
-    read -p "Delete unused directory ‘bundle/$unused’? [y/N] " ans
-    case $ans in
-        [Yy] ) rm -rf "bundle/$unused"; echo "Deleted.";;
-        [Nn] ) ;;
-        ""   ) ;;
-        *    ) echo "Skipped.";;
-    esac
-    echo
-done
-
-rm -rf "$bdirlist"
