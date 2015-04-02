@@ -316,3 +316,8 @@ let g:tagbar_iconchars=['▸', '▾']
 " undotree
 nnoremap <silent> <F9> :UndotreeToggle<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-latex-live-preview
+if (system('uname') =~ "darwin")
+  let g:livepreview_previewer = 'open -a Preview'
+endif
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
