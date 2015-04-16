@@ -13,3 +13,5 @@ Likely does not support older versions of vim. It is recommended to have the lat
         $ cd ~/.vim/
         $ sh ./plugins.sh
     Additional plugins can listed in the plugins.sh file, please see the source for more details.
+
+Note: Configuration will not load properly if the repository is not cloned into `~/.vim`
