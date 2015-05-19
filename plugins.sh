@@ -24,7 +24,6 @@ bundle_git() {
     echo
 }
 
-bundle_git "https://github.com/mileszs/ack.vim.git"
 bundle_git "https://github.com/vim-scripts/bufexplorer.zip.git"
 bundle_git "https://github.com/Rip-Rip/clang_complete.git"
 bundle_git "https://github.com/davidhalter/jedi-vim.git"
