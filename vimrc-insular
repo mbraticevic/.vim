@@ -1,7 +1,7 @@
 " Ignore local vim settings and use settings from this directory
 
 let &runtimepath = printf('%s/vimfiles,%s,%s/vimfiles/after', $VIM, $VIMRUNTIME, $VIM)
-let s:portable = expand('<sfile>:p:h')
+let s:portable = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 let &runtimepath = printf('%s,%s,%s/after', s:portable, &runtimepath, s:portable)
 let s:vimrc = printf('%s/vimrc', s:portable)
 exec ":source" . s:vimrc
