@@ -2,9 +2,12 @@
 
 set -e
 
+CURDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+ln -sfn $CURDIR/vimrc-insular ~/.vimrc
+
 mkdir -p bundle
 mkdir -p autoload
-ln -sf ../bundle/vim-pathogen/autoload/pathogen.vim autoload/pathogen.vim
+ln -sfn ../bundle/vim-pathogen/autoload/pathogen.vim autoload/pathogen.vim
 
 bundle_git() {
     local bdir=$( echo "$1" | sed 's/.*\/\(.*\)\.git/\1/' )
