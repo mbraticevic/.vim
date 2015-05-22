@@ -6,12 +6,8 @@ Likely does not support older versions of vim. It is recommended to have the lat
 1. Clone the repository
     
         $ git clone https://github.com/traib/.vim.git ~/.vim
-        $ ln -s ~/.vim/vimrc ~/.vimrc
 
-2. Set-up plugins
+2. Use `setup.sh` for both installation and update, of symlinks and plugins
         
-        $ cd ~/.vim/
-        $ sh ./plugins.sh
-    Additional plugins can listed in the plugins.sh file, please see the source for more details.
-
-Note: Configuration will not load properly if the repository is not cloned into `~/.vim`
+        $ sh ~/.vim/setup.sh
+    Additional plugins can listed in the same file, please see the source for more info.
