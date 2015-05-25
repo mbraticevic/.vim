@@ -5,6 +5,7 @@ set -e
 CURDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 ln -sfn $CURDIR/vimrc-insular ~/.vimrc
 
+cd $CURDIR
 mkdir -p bundle
 mkdir -p autoload
 ln -sfn ../bundle/vim-pathogen/autoload/pathogen.vim autoload/pathogen.vim
