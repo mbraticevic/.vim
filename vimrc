@@ -253,7 +253,6 @@ set statusline+=\ %2*%m%*
 set statusline+=%=
 set statusline+=L%l/%L:C%-3c\ %3p%%
 set statusline+=\ %<
-set statusline+=%3*%{fugitive#statusline()}%*
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " clang_complete
@@ -274,11 +273,6 @@ colorscheme jellybeans
 " Markdown Vim Mode
 let g:vim_markdown_folding_disabled=1
 autocmd Vimrc FileType mkd setlocal foldmethod=expr foldexpr=Foldexpr_markdown(v:lnum)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERD Tree
-nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
-let g:NERDTreeChDirMode=2
-let nerdtree_tabs_open_on_gui_startup=0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Supertab
 let g:SuperTabDefaultCompletionType="context"
