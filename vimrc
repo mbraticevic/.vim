@@ -201,12 +201,9 @@ filetype plugin indent on
 set autoindent          " copy indent from current line when starting a new one
 set smarttab            " tab in front of a line inserts blanks acc. to 'shiftwidth'
 set shiftround          " round indent to multiple of 'shiftwidth'
-call SeIndentSoft(4)    " use 4 spaces per indentation level
-
+call SeIndentSoft(2)    " use 2 spaces per indentation level
 augroup Vimrc_indent
   autocmd!
-  autocmd FileType vim call SetlIndentSoft(2)
-  autocmd FileType *html* call SetlIndentSoft(2)
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
