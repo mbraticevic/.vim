@@ -244,7 +244,7 @@ autocmd Vimrc FileType c setlocal foldmethod=syntax
 set laststatus=2
 set statusline=
 set statusline+=[%n]
-set statusline+=\ %1*[%.16t]%*%y
+set statusline+=\ %1*[%.64t]%*%y
 set statusline+=[%{&ff}→%{strlen(&fenc)?&fenc:'none'}%{&bomb?\"•\":\"\"}]
 set statusline+=\ %2*%m%*
 set statusline+=%=
