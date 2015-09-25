@@ -83,6 +83,7 @@ set t_vb=
 " Show-off
 set display=lastline    " display as much as possible of the last line
 set number              " show line numbers
+set relativenumber      " show relative line numbers
 set ruler               " show the cursor position
 set scrolloff=8         " min screen lines to keep above/below cursor
 set showmode            " if in I, R or V, put a msg on the last line
