@@ -205,6 +205,7 @@ set shiftround          " round indent to multiple of 'shiftwidth'
 call SeIndentSoft(2)    " use 2 spaces per indentation level
 augroup Vimrc_indent
   autocmd!
+  autocmd FileType go call SetlIndentHard(4)
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -276,7 +277,7 @@ autocmd Vimrc FileType mkd setlocal foldmethod=expr foldexpr=Foldexpr_markdown(v
 let g:SuperTabDefaultCompletionType="context"
 autocmd Vimrc FileType *
   \ if &omnifunc != '' |
-  \   call SuperTabChain(&omnifunc, "<c-p>") |
+  \   call SuperTabChain(&omnifunc, "<C-p>") |
   \ endif
 let g:SuperTabRetainCompletionDuration="completion"
 let g:SuperTabNoCompleteAfter=['^', ',', '\s', ';', '=', '[', ']', '(', ')', '{', '}']
