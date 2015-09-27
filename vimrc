@@ -45,9 +45,9 @@ set wildmode=list:longest,full
 set wildignorecase
 
 " Insert mode completion
-" set complete=.,b,u,t
-" set completeopt=longest,menu
-" set pumheight=10
+set complete=.,b,u,t
+set completeopt=longest,menu
+set pumheight=10
 
 " Extra search features
 set incsearch           " incremental searching
@@ -254,8 +254,6 @@ set statusline+=\ %<
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " clang_complete
-let g:clang_complete_auto = 0
-let g:clang_auto_select = 0
 let g:clang_close_preview=1
 let g:clang_use_library=1
 let g:clang_complete_macros=1
@@ -274,37 +272,16 @@ colorscheme jellybeans
 let g:vim_markdown_folding_disabled=1
 autocmd Vimrc FileType mkd setlocal foldmethod=expr foldexpr=Foldexpr_markdown(v:lnum)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" neocomplete
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#disable_auto_complete = 1
-
-inoremap <silent> <expr><CR> pumvisible() ? "\<C-y>" : "\<CR>"
-inoremap <expr><TAB> pumvisible() ?
-    \ "\<Down>" : <SID>neo_check_back() ? "\<TAB>" : "\<C-n>\<Down>"
-function! s:neo_check_back()
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-inoremap <expr><S-Tab> pumvisible() ? "\<Up>" : "\<C-p>\<Up>"
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:neocomplete#force_omni_input_patterns.objc = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplete#force_omni_input_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+" Supertab
+let g:SuperTabDefaultCompletionType="context"
+autocmd Vimrc FileType *
+  \ if &omnifunc != '' |
+  \   call SuperTabChain(&omnifunc, "<c-p>") |
+  \ endif
+let g:SuperTabRetainCompletionDuration="completion"
+let g:SuperTabNoCompleteAfter=['^', ',', '\s', ';', '=', '[', ']', '(', ')', '{', '}']
+let g:SuperTabLongestEnhanced=1
+let g:SuperTabLongestHighlight=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Surround
 if !exists("g:surround_no_mappings") || ! g:surround_no_mappings
