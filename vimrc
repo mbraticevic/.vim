@@ -46,8 +46,7 @@ set wildignorecase
 
 " Insert mode completion
 set complete=.,b,u,t
-set completeopt=longest,menu
-set pumheight=10
+set completeopt=longest,menuone
 
 " Extra search features
 set incsearch           " incremental searching
