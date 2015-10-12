@@ -261,6 +261,9 @@ let g:clang_use_library=1
 let g:clang_complete_macros=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " gruvbox
+let g:gruvbox_bold=0
+let g:gruvbox_italic=0
+set background=dark
 syntax enable
 colorscheme gruvbox
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
