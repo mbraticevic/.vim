@@ -205,6 +205,7 @@ call SeIndentSoft(2)    " use 2 spaces per indentation level
 augroup Vimrc_indent
   autocmd!
   autocmd FileType go call SetlIndentHard(4)
+  autocmd FileType yaml call SetlIndentSoft(4)
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
