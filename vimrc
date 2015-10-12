@@ -107,6 +107,7 @@ set nostartofline       " keep cursor in same column if possible
 set notimeout ttimeout ttimeoutlen=50
 set ttyfast             " fast terminal connection
 set virtualedit=block   " allow virtual editing in visual block mode
+set lazyredraw          " do not redraw while executing macros, registers, etc.
 
 " Miscellaneous Mappings
 cnoremap w!! w !sudo tee >/dev/null %
