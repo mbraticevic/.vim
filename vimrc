@@ -260,15 +260,12 @@ let g:clang_close_preview=1
 let g:clang_use_library=1
 let g:clang_complete_macros=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" gruvbox
+syntax enable
+colorscheme gruvbox
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " jedi-vim
 let g:jedi#show_call_signatures=0
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Jellybeans
-syntax enable
-let g:jellybeans_overrides = {
-  \ 'Cursor': { 'guifg': '151515', 'guibg': 'b0d0f0' },
-  \ }
-colorscheme jellybeans
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Markdown Vim Mode
 let g:vim_markdown_folding_disabled=1

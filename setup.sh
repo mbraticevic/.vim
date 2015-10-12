@@ -30,8 +30,8 @@ bundle_git() {
 
 bundle_git "https://github.com/vim-scripts/bufexplorer.zip.git"
 bundle_git "https://github.com/Rip-Rip/clang_complete.git"
+bundle_git "https://github.com/morhetz/gruvbox.git"
 bundle_git "https://github.com/davidhalter/jedi-vim.git"
-bundle_git "https://github.com/nanotech/jellybeans.vim.git"
 bundle_git "https://github.com/LaTeX-Box-Team/LaTeX-Box.git"
 bundle_git "https://github.com/ervandew/supertab.git"
 bundle_git "https://github.com/scrooloose/syntastic.git"
