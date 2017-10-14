@@ -28,6 +28,8 @@ if __name__ == '__main__':
             # TeX
             'https://github.com/lervag/vimtex.git',
             'https://github.com/xuhdev/vim-latex-live-preview.git',
+            # Version Control
+            'https://github.com/mhinz/vim-signify.git'
     )
 
     HOME = os.path.expanduser('~')

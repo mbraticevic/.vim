@@ -210,39 +210,6 @@ augroup Vimrc_indent
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vimrc - Folding
-set foldmethod=indent   " lines with equal indent form a fold
-set foldlevelstart=99   " set foldlevel when starting to edit a buffer
-set foldnestmax=2       " max nesting of folds for indent & syntax
-set foldcolumn=1        " use these many columns to indicate folds
-set foldopen+=jump      " also open folds if the cursor jumps inside
-nnoremap <Space> za
-
-function! FoldText()
-  let fs = v:foldstart
-  while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
-  endwhile
-  if fs > v:foldend
-    let line = getline(v:foldstart)
-  else
-    let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
-  endif
-
-  let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
-  let foldSize = 1 + v:foldend - v:foldstart
-  let foldSizeStr = " " . foldSize . " lines "
-  let foldLevelStr = repeat("<", v:foldlevel)
-  let lineCount = line("$")
-  let foldPercentage = printf("[%.1f", (foldSize*1.0)/lineCount*100) . "%] "
-  let expansionString = repeat(" ", w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
-  return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
-endfunction
-set foldtext=FoldText()
-
-let c_no_comment_fold=1
-autocmd Vimrc FileType c setlocal foldmethod=syntax
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vimrc - Statusline
 set laststatus=2
 set statusline=
