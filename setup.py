@@ -7,13 +7,9 @@ from __future__ import (absolute_import,
 
 if __name__ == '__main__':
     import collections
-    import itertools
     import os
     import sh
 
-    PLUGINS_COMPULSORY = (
-            'https://github.com/tpope/vim-pathogen.git',
-    )
     PLUGINS = (
             'https://github.com/vim-scripts/bufexplorer.zip.git',
             'https://github.com/Rip-Rip/clang_complete.git',
@@ -40,9 +36,15 @@ if __name__ == '__main__':
     HOME = os.path.expanduser('~')
     SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
-    def sh_ln(src, dst):
-        print('Symlinking \'{}\' -> \'{}\'.'.format(src, dst))
-        sh.ln('-s', '-f', '-n', dst, src)
+
+    def sh_curl(src, dst):
+        print('Downloading \'{}\' (\'{}\').'.format(dst, src))
+        sh.curl('--fail', '--location', '--create-dirs', '--output', dst, src)
+
+    sh_curl('https://raw.githubusercontent.com/tpope/vim-pathogen/master/'
+            'autoload/pathogen.vim',
+            os.path.join(SCRIPT_DIR, 'autoload', 'pathogen.vim'))
+
 
     def sh_mkdir(dst):
         print('Creating \'{}\'.'.format(dst))
@@ -51,24 +53,18 @@ if __name__ == '__main__':
     def bundle_name(plugin):
         return plugin.rsplit('/')[-1].split('.git')[0]
 
-
-    sh_ln(os.path.join(HOME, '.vimrc'),
-          os.path.join(SCRIPT_DIR, 'vimrc-insular'))
-
-    sh_mkdir(os.path.join(SCRIPT_DIR, 'autoload'))
-    sh_ln(os.path.join(SCRIPT_DIR, 'autoload', 'pathogen.vim'),
-          os.path.join(SCRIPT_DIR, 'bundle', 'vim-pathogen',
-                                   'autoload', 'pathogen.vim'))
+    def bundle_dir(bundle, op):
+        bundle_dir_ = os.path.join(SCRIPT_DIR, 'bundle', bundle)
+        print('{} plugin \'{}\' (\'{}\').'.format(op, bundle, bundle_dir_))
+        return bundle_dir_
 
     sh_mkdir(os.path.join(SCRIPT_DIR, 'bundle'))
-
 
     bundles_present = collections.OrderedDict(
             (bundle, None) for bundle in
             sorted(os.listdir(os.path.join(SCRIPT_DIR, 'bundle'))))
     bundles_needed = collections.OrderedDict(
-            (bundle_name(plugin), plugin) for plugin in
-            itertools.chain(PLUGINS_COMPULSORY, PLUGINS))
+            (bundle_name(plugin), plugin) for plugin in PLUGINS)
 
     bundles_to_update = collections.OrderedDict(
             (bundle, plugin) for (bundle, plugin) in bundles_needed.iteritems()
@@ -81,19 +77,16 @@ if __name__ == '__main__':
             if bundle not in bundles_needed)
 
     for bundle, plugin in bundles_to_install.iteritems():
-        bundle_dir = os.path.join(SCRIPT_DIR, 'bundle', bundle)
-        print('Installing plugin \'{}\' (\'{}\').'.format(bundle, bundle_dir))
-        sh.git('clone', '--recursive', plugin, bundle_dir)
+        bundle_dir_ = bundle_dir(bundle, 'Installing')
+        sh.git('clone', '--recursive', plugin, bundle_dir_)
 
     for bundle, plugin in bundles_to_update.iteritems():
-        bundle_dir = os.path.join(SCRIPT_DIR, 'bundle', bundle)
-        print('Updating plugin \'{}\' (\'{}\').'.format(bundle, bundle_dir))
-        sh.git('-C', bundle_dir, 'pull', '--recurse-submodules')
-        sh.git('-C', bundle_dir,
+        bundle_dir_ = bundle_dir(bundle, 'Updating')
+        sh.git('-C', bundle_dir_, 'pull', '--recurse-submodules')
+        sh.git('-C', bundle_dir_,
                'submodule', 'update', '--init', '--remote', '--recursive')
 
     for bundle in bundles_to_remove:
-        bundle_dir = os.path.join(SCRIPT_DIR, 'bundle', bundle)
-        print('Removing plugin \'{}\' (\'{}\').'.format(bundle, bundle_dir))
-        sh.rm('-r', '-f', bundle_dir)
+        bundle_dir_ = bundle_dir(bundle, 'Removing')
+        sh.rm('-r', '-f', bundle_dir_)
 
