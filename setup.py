@@ -11,26 +11,23 @@ if __name__ == '__main__':
     import sh
 
     PLUGINS = (
+            # General
             'https://github.com/vim-scripts/bufexplorer.zip.git',
-            'https://github.com/Rip-Rip/clang_complete.git',
             'https://github.com/morhetz/gruvbox.git',
-            'https://github.com/davidhalter/jedi-vim.git',
-            'https://github.com/LaTeX-Box-Team/LaTeX-Box.git',
             'https://github.com/ervandew/supertab.git',
-            'https://github.com/scrooloose/syntastic.git',
-            'https://github.com/godlygeek/tabular.git',
             'https://github.com/wellle/targets.vim.git',
-            'https://github.com/majutsushi/tagbar.git',
-            'https://github.com/tomtom/tcomment_vim.git',
-            'https://github.com/mbbill/undotree.git',
-            'https://github.com/easymotion/vim-easymotion.git',
-            'https://github.com/fatih/vim-go.git',
-            'https://github.com/pangloss/vim-javascript.git',
-            'https://github.com/xuhdev/vim-latex-live-preview.git',
-            'https://github.com/groenewege/vim-less.git',
-            'https://github.com/plasticboy/vim-markdown.git',
+            'https://github.com/junegunn/vim-easy-align.git',
             'https://github.com/tpope/vim-repeat.git',
             'https://github.com/tpope/vim-surround.git',
+            # Markdown
+            'https://github.com/plasticboy/vim-markdown.git',
+            # Programming
+            'https://github.com/scrooloose/syntastic.git',
+            'https://github.com/majutsushi/tagbar.git',
+            'https://github.com/tpope/vim-commentary.git',
+            # TeX
+            'https://github.com/lervag/vimtex.git',
+            'https://github.com/xuhdev/vim-latex-live-preview.git',
     )
 
     HOME = os.path.expanduser('~')
@@ -76,15 +73,15 @@ if __name__ == '__main__':
             (bundle, None) for bundle in bundles_present
             if bundle not in bundles_needed)
 
-    for bundle, plugin in bundles_to_install.iteritems():
-        bundle_dir_ = bundle_dir(bundle, 'Installing')
-        sh.git('clone', '--recursive', plugin, bundle_dir_)
-
     for bundle, plugin in bundles_to_update.iteritems():
         bundle_dir_ = bundle_dir(bundle, 'Updating')
         sh.git('-C', bundle_dir_, 'pull', '--recurse-submodules')
         sh.git('-C', bundle_dir_,
                'submodule', 'update', '--init', '--remote', '--recursive')
+
+    for bundle, plugin in bundles_to_install.iteritems():
+        bundle_dir_ = bundle_dir(bundle, 'Installing')
+        sh.git('clone', '--recursive', plugin, bundle_dir_)
 
     for bundle in bundles_to_remove:
         bundle_dir_ = bundle_dir(bundle, 'Removing')

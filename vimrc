@@ -255,11 +255,6 @@ set statusline+=L%l/%L:C%-3c\ %3p%%
 set statusline+=\ %<
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" clang_complete
-let g:clang_close_preview=1
-let g:clang_use_library=1
-let g:clang_complete_macros=1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " gruvbox
 let g:gruvbox_bold=0
 let g:gruvbox_italic=0
@@ -267,54 +262,23 @@ set background=dark
 syntax enable
 colorscheme gruvbox
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" jedi-vim
-let g:jedi#show_call_signatures=0
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Markdown Vim Mode
-let g:vim_markdown_folding_disabled=1
-autocmd Vimrc FileType mkd setlocal foldmethod=expr foldexpr=Foldexpr_markdown(v:lnum)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Supertab
-let g:SuperTabDefaultCompletionType="context"
-autocmd Vimrc FileType *
-  \ if &omnifunc != '' |
-  \   call SuperTabChain(&omnifunc, "<C-p>") |
-  \ endif
-let g:SuperTabRetainCompletionDuration="completion"
 let g:SuperTabNoCompleteAfter=['^', ',', '\s', ';', '=', '[', ']', '(', ')', '{', '}']
 let g:SuperTabLongestEnhanced=1
 let g:SuperTabLongestHighlight=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Surround
-if !exists("g:surround_no_mappings") || ! g:surround_no_mappings
+if !exists('g:surround_no_mappings') || ! g:surround_no_mappings
   autocmd Vimrc BufEnter \[BufExplorer\] unmap ds
   autocmd Vimrc BufLeave \[BufExplorer\] nmap ds <Plug>Dsurround
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntastic
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-
-let g:syntastic_c_compiler='clang'
-let g:syntastic_c_compiler_options=' -std=c99 -pedantic -Wall -Wextra'
-let g:syntastic_c_config_file='.clang_complete'
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tagbar
-nnoremap <silent> <F10> :TagbarToggle<CR>
+nnoremap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus=1
-let g:tagbar_compact=1
-let g:tagbar_expand=1
-let g:tagbar_foldlevel=0
-let g:tagbar_iconchars=['▸', '▾']
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" undotree
-nnoremap <silent> <F9> :UndotreeToggle<CR>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-go
-let g:go_fmt_fail_silently = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-latex-live-preview
-if (system('uname') =~ "darwin")
+if (system('uname') =~ 'darwin')
   let g:livepreview_previewer = 'open -a Preview'
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
