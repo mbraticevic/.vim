@@ -229,6 +229,9 @@ set background=dark
 syntax enable
 colorscheme gruvbox
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" jedi-vim
+let g:jedi#show_call_signatures = 0
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Supertab
 let g:SuperTabNoCompleteAfter=['^', ',', '\s', ';', '=', '[', ']', '(', ')', '{', '}']
 let g:SuperTabLongestEnhanced=1
