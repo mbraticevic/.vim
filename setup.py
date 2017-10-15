@@ -19,6 +19,7 @@ if __name__ == '__main__':
         'https://github.com/morhetz/gruvbox.git',
         'https://github.com/ervandew/supertab.git',
         'https://github.com/wellle/targets.vim.git',
+        'https://github.com/vim-airline/vim-airline.git',
         'https://github.com/junegunn/vim-easy-align.git',
         'https://github.com/tpope/vim-repeat.git',
         'https://github.com/justinmk/vim-sneak.git',

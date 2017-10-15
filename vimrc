@@ -210,21 +210,10 @@ augroup Vimrc_indent
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vimrc - Statusline
-set laststatus=2
-set statusline=
-set statusline+=[%n]
-set statusline+=\ %1*[%.64t]%*%y
-set statusline+=[%{&ff}→%{strlen(&fenc)?&fenc:'none'}%{&bomb?\"•\":\"\"}]
-set statusline+=\ %2*%m%*
-set statusline+=%=
-set statusline+=L%l/%L:C%-3c\ %3p%%
-set statusline+=\ %<
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " gruvbox
 let g:gruvbox_bold=0
 let g:gruvbox_italic=0
+set termguicolors
 set background=dark
 syntax enable
 colorscheme gruvbox
