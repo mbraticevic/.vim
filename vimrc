@@ -232,23 +232,27 @@ colorscheme gruvbox
 " jedi-vim
 let g:jedi#show_call_signatures = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Supertab
+" supertab
 let g:SuperTabNoCompleteAfter=['^', ',', '\s', ';', '=', '[', ']', '(', ')', '{', '}']
 let g:SuperTabLongestEnhanced=1
 let g:SuperTabLongestHighlight=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Surround
-if !exists('g:surround_no_mappings') || ! g:surround_no_mappings
-  autocmd Vimrc BufEnter \[BufExplorer\] unmap ds
-  autocmd Vimrc BufLeave \[BufExplorer\] nmap ds <Plug>Dsurround
-endif
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tagbar
+" tagbar
 nnoremap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-latex-live-preview
 if (system('uname') =~ 'darwin')
   let g:livepreview_previewer = 'open -a Preview'
+endif
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-sneak
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-surround
+if !exists('g:surround_no_mappings') || ! g:surround_no_mappings
+  autocmd Vimrc BufEnter \[BufExplorer\] unmap ds
+  autocmd Vimrc BufLeave \[BufExplorer\] nmap ds <Plug>Dsurround
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
