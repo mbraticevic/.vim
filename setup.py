@@ -47,9 +47,16 @@ if __name__ == '__main__':
     HOME = os.path.expanduser('~')
     SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
+    def sh_ln(src, dst):
+        print('Symlinking \'{}\' (\'{}\').'.format(src, dst))
+        sh.ln('-s', '-f', '-n', dst, src)
+
     def sh_curl(src, dst):
-        print('Downloading \'{}\' (\'{}\').'.format(dst, src))
+        print('Downloading \'{}\' (\'{}\').'.format(src, dst))
         sh.curl('--fail', '--location', '--create-dirs', '--output', dst, src)
+
+    sh_ln(os.path.join(HOME, '.vimrc'),
+          os.path.join(SCRIPT_DIR, 'vimrc-insular'))
 
     sh_curl('https://raw.githubusercontent.com/tpope/vim-pathogen/master/'
             'autoload/pathogen.vim',
