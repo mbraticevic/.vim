@@ -22,6 +22,8 @@ if __name__ == '__main__':
         'https://github.com/vim-airline/vim-airline.git',
         'https://github.com/junegunn/vim-easy-align.git',
         'https://github.com/easymotion/vim-easymotion.git',
+        'https://github.com/tommcdo/vim-exchange.git',
+        'https://github.com/michaeljsmith/vim-indent-object.git',
         'https://github.com/tpope/vim-repeat.git',
         'https://github.com/tpope/vim-surround.git',
         # Markdown

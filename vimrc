@@ -167,7 +167,7 @@ syntax enable
 colorscheme gruvbox
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " jedi-vim
-let g:jedi#show_call_signatures = 0
+let g:jedi#show_call_signatures=0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " supertab
 let g:SuperTabNoCompleteAfter=['^', ',', '\s', ';', '=', '[', ']', '(', ')', '{', '}']
@@ -178,9 +178,13 @@ let g:SuperTabLongestHighlight=1
 nnoremap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" targets.vim
+" Prefer multiline targets around cursor over distant targets within cursor line
+let g:targets_seekRanges='cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-latex-live-preview
 if (system('uname') =~ 'darwin')
-  let g:livepreview_previewer = 'open -a Preview'
+  let g:livepreview_previewer='open -a Preview'
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-surround
