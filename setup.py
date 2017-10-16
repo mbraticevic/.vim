@@ -56,7 +56,7 @@ if __name__ == '__main__':
         sh.curl('--fail', '--location', '--create-dirs', '--output', dst, src)
 
     sh_ln(os.path.join(HOME, '.vimrc'),
-          os.path.join(SCRIPT_DIR, 'vimrc-insular'))
+          os.path.join(SCRIPT_DIR, 'vimrc-bootstrap'))
 
     sh_curl('https://raw.githubusercontent.com/tpope/vim-pathogen/master/'
             'autoload/pathogen.vim',
