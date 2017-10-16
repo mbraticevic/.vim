@@ -103,6 +103,7 @@ set laststatus=2        " always show status line
 set nolangremap         " langmap won't apply to chars resulting from a mapping
 
 " Miscellaneous Mappings
+let mapleader="\<space>"
 cnoremap w!! w !sudo tee >/dev/null %
 inoremap <C-u> <C-g>u<C-u>
 nnoremap & :&&<CR>
