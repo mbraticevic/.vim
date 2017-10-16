@@ -11,7 +11,7 @@ if __name__ == '__main__':
 
     import sh
 
-    # Split into sections. Additional requirements are listed in brackets (),
+    # Split into sections. Additional requirements are listed in comments,
     # and should be installed separately for enabling relevant functionality.
     PLUGINS = (
         # General
@@ -27,8 +27,8 @@ if __name__ == '__main__':
         # Markdown
         'https://github.com/plasticboy/vim-markdown.git',
         # Programming
+        'https://github.com/w0rp/ale.git',  # see docs for language tools
         'https://github.com/Yggdroot/indentLine.git',
-        'https://github.com/scrooloose/syntastic.git',  # flake8, pylint
         'https://github.com/majutsushi/tagbar.git',
         'https://github.com/Chiel92/vim-autoformat.git',  # yapf
         'https://github.com/tpope/vim-commentary.git',
