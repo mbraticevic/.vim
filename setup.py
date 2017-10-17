@@ -52,23 +52,21 @@ if __name__ == '__main__':
     SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
     def sh_ln(src, dst):
-        print('Symlinking \'{}\' (\'{}\').'.format(src, dst))
+        print('SLinking \'{}\' (\'{}\').'.format(src, dst))
         sh.ln('-s', '-f', '-n', dst, src)
 
     def sh_curl(src, dst):
-        print('Downloading \'{}\' (\'{}\').'.format(src, dst))
+        print('DLoading \'{}\' (\'{}\').'.format(src, dst))
         sh.curl('--fail', '--location', '--create-dirs', '--output', dst, src)
-
-    sh_ln(os.path.join(HOME, '.vimrc'),
-          os.path.join(SCRIPT_DIR, 'vimrc-bootstrap'))
-
-    sh_curl('https://raw.githubusercontent.com/tpope/vim-pathogen/master/'
-            'autoload/pathogen.vim',
-            os.path.join(SCRIPT_DIR, 'autoload', 'pathogen.vim'))
 
     def sh_mkdir(dst):
         print('Creating \'{}\'.'.format(dst))
         sh.mkdir('-p', dst)
+
+    def sh_gitpull(dst):
+        sh.git('-C', dst, 'pull', '--recurse-submodules')
+        sh.git('-C', dst, 'submodule', 'update',
+               '--init', '--remote', '--recursive')
 
     def bundle_name(plugin):
         return plugin.rsplit('/')[-1].split('.git')[0]
@@ -77,6 +75,16 @@ if __name__ == '__main__':
         bundle_dir_ = os.path.join(SCRIPT_DIR, 'bundle', bundle)
         print('{} plugin \'{}\' (\'{}\').'.format(op, bundle, bundle_dir_))
         return bundle_dir_
+
+    print('Updating repository \'{}\'.'.format(SCRIPT_DIR))
+    sh_gitpull(SCRIPT_DIR)
+
+    sh_ln(os.path.join(HOME, '.vimrc'),
+          os.path.join(SCRIPT_DIR, 'vimrc-bootstrap'))
+
+    sh_curl('https://raw.githubusercontent.com/tpope/vim-pathogen/master/'
+            'autoload/pathogen.vim',
+            os.path.join(SCRIPT_DIR, 'autoload', 'pathogen.vim'))
 
     sh_mkdir(os.path.join(SCRIPT_DIR, 'bundle'))
 
@@ -98,12 +106,10 @@ if __name__ == '__main__':
 
     for bundle, plugin in bundles_to_update.iteritems():
         bundle_dir_ = bundle_dir(bundle, 'Updating')
-        sh.git('-C', bundle_dir_, 'pull', '--recurse-submodules')
-        sh.git('-C', bundle_dir_,
-               'submodule', 'update', '--init', '--remote', '--recursive')
+        sh_gitpull(bundle_dir_)
 
     for bundle, plugin in bundles_to_install.iteritems():
-        bundle_dir_ = bundle_dir(bundle, 'Installing')
+        bundle_dir_ = bundle_dir(bundle, 'Instling')
         sh.git('clone', '--recursive', plugin, bundle_dir_)
 
     for bundle in bundles_to_remove:
