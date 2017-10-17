@@ -49,9 +49,10 @@ if __name__ == '__main__':
     HOME = os.path.expanduser('~')
     SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
-    def sh_ln(src, dst):
-        print('SLinking \'{}\' (\'{}\').'.format(src, dst))
-        sh.ln('-s', '-f', '-n', dst, src)
+    def sh_gitpull(dst):
+        sh.git('-C', dst, 'pull', '--recurse-submodules')
+        sh.git('-C', dst, 'submodule', 'update',
+               '--init', '--remote', '--recursive')
 
     def sh_curl(src, dst):
         print('DLoading \'{}\' (\'{}\').'.format(src, dst))
@@ -61,11 +62,6 @@ if __name__ == '__main__':
         print('Creating \'{}\'.'.format(dst))
         sh.mkdir('-p', dst)
 
-    def sh_gitpull(dst):
-        sh.git('-C', dst, 'pull', '--recurse-submodules')
-        sh.git('-C', dst, 'submodule', 'update',
-               '--init', '--remote', '--recursive')
-
     def bundle_name(plugin):
         return plugin.rsplit('/')[-1].split('.git')[0]
 
@@ -74,11 +70,12 @@ if __name__ == '__main__':
         print('{} plugin \'{}\' (\'{}\').'.format(op, bundle, bundle_dir_))
         return bundle_dir_
 
+    def sh_ln(src, dst):
+        print('SLinking \'{}\' (\'{}\').'.format(src, dst))
+        sh.ln('-s', '-f', '-n', dst, src)
+
     print('Updating repository \'{}\'.'.format(SCRIPT_DIR))
     sh_gitpull(SCRIPT_DIR)
-
-    sh_ln(os.path.join(HOME, '.vimrc'),
-          os.path.join(SCRIPT_DIR, 'vimrc-bootstrap'))
 
     sh_curl('https://raw.githubusercontent.com/tpope/vim-pathogen/master/'
             'autoload/pathogen.vim',
@@ -113,3 +110,6 @@ if __name__ == '__main__':
     for bundle in bundles_to_remove:
         bundle_dir_ = bundle_dir(bundle, 'Removing')
         sh.rm('-r', '-f', bundle_dir_)
+
+    sh_ln(os.path.join(HOME, '.vimrc'),
+          os.path.join(SCRIPT_DIR, 'vimrc-bootstrap'))
