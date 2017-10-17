@@ -28,8 +28,6 @@ if __name__ == '__main__':
         'https://github.com/kshenoy/vim-signature.git',
         'https://github.com/mhinz/vim-startify.git',
         'https://github.com/tpope/vim-surround.git',
-        # Markdown
-        'https://github.com/plasticboy/vim-markdown.git',
         # Programming
         'https://github.com/w0rp/ale.git',  # see docs for language tools
         'https://github.com/Yggdroot/indentLine.git',
