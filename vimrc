@@ -102,6 +102,7 @@ set lazyredraw          " do not redraw while executing macros, registers, etc.
 set laststatus=2        " always show status line
 set nolangremap         " langmap won't apply to chars resulting from a mapping
 set nofoldenable        " disable folding
+set hidden              " buffers become hidden when they are abandoned
 
 " Miscellaneous Mappings
 let mapleader="\<space>"
