@@ -161,6 +161,7 @@ augroup END
 " gruvbox
 let g:gruvbox_bold=0
 let g:gruvbox_italic=0
+let g:gruvbox_contrast_dark='hard'
 set termguicolors
 set background=dark
 syntax enable
@@ -181,6 +182,11 @@ let g:tagbar_autofocus=1
 " targets.vim
 " Prefer multiline targets around cursor over distant targets within cursor line
 let g:targets_seekRanges='cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-airline
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#buffer_idx_mode=1
+let g:airline#extensions#tabline#fnamemod=':t'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-latex-live-preview
 if (system('uname') =~ 'darwin')
