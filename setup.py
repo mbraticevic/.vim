@@ -32,13 +32,17 @@ if __name__ == '__main__':
         'https://github.com/w0rp/ale.git',  # see docs for language tools
         'https://github.com/Yggdroot/indentLine.git',
         'https://github.com/majutsushi/tagbar.git',
-        'https://github.com/Chiel92/vim-autoformat.git',  # yapf
+        'https://github.com/Chiel92/vim-autoformat.git',  # yapf, rustfmt
         'https://github.com/tpope/vim-commentary.git',
         # Python
         'https://github.com/davidhalter/jedi-vim.git',  # jedi
         'https://github.com/fisadev/vim-isort.git',  # isort
         'https://github.com/Vimjas/vim-python-pep8-indent.git',
         'https://github.com/jmcantrell/vim-virtualenv.git',
+        # Rust
+        'https://github.com/rust-lang/rust.vim.git',
+        'https://github.com/racer-rust/vim-racer.git',  # racer
+        'https://github.com/cespare/vim-toml.git',
         # TeX
         'https://github.com/lervag/vimtex.git',
         'https://github.com/xuhdev/vim-latex-live-preview.git',
