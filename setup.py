@@ -16,18 +16,19 @@ if __name__ == '__main__':
     PLUGINS = (
         # General
         'https://github.com/vim-scripts/bufexplorer.zip.git',
+        'https://github.com/junegunn/goyo.vim.git',
         'https://github.com/morhetz/gruvbox.git',
         'https://github.com/ervandew/supertab.git',
         'https://github.com/wellle/targets.vim.git',
         'https://github.com/vim-airline/vim-airline.git',
         'https://github.com/junegunn/vim-easy-align.git',
-        'https://github.com/easymotion/vim-easymotion.git',
         'https://github.com/tommcdo/vim-exchange.git',
         'https://github.com/michaeljsmith/vim-indent-object.git',
         'https://github.com/tpope/vim-repeat.git',
         'https://github.com/kshenoy/vim-signature.git',
         'https://github.com/mhinz/vim-startify.git',
         'https://github.com/tpope/vim-surround.git',
+        'https://github.com/tpope/vim-unimpaired.git',
         # Programming
         'https://github.com/w0rp/ale.git',  # see docs for language tools
         'https://github.com/Yggdroot/indentLine.git',
@@ -47,6 +48,7 @@ if __name__ == '__main__':
         'https://github.com/lervag/vimtex.git',
         'https://github.com/xuhdev/vim-latex-live-preview.git',
         # Version Control
+        'https://github.com/tpope/vim-fugitive.git',
         'https://github.com/mhinz/vim-signify.git',
     )
 

@@ -92,7 +92,6 @@ set showcmd             " show (partial) command in status line
 set backspace=indent,eol,start  " backspace over everything
 set confirm             " raise a dialog instead of failing
 set nojoinspaces        " never insert two spaces on a join command
-set mouse=a             " enable mouse for all modes
 set nrformats=alpha,hex,bin  " C-A, C-X apply to alphabet, hexadecimal, binary
 set splitright          " put new window to the right of current one
 set notimeout ttimeout ttimeoutlen=100  " time out on key codes only
@@ -103,15 +102,16 @@ set laststatus=2        " always show status line
 set nolangremap         " langmap won't apply to chars resulting from a mapping
 set nofoldenable        " disable folding
 set hidden              " buffers become hidden when they are abandoned
+set autoread            " automatically reload files not changed inside vim
 
 " Miscellaneous Mappings
-let mapleader="\<space>"
 cnoremap w!! w !sudo tee >/dev/null %
 inoremap <C-u> <C-g>u<C-u>
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 nnoremap Y y$
 nnoremap <silent> <leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap gV `[v`]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vimrc - Indentation - functions
