@@ -5,10 +5,10 @@
 "
 " Personal vimrc that's tweaked and updated religiously.
 
-" Basic
+" Vim not Vi
 set nocompatible
-execute pathogen#infect()
-execute pathogen#helptags()
+
+" Clear mappings
 augroup Vimrc
   autocmd!
 augroup END
@@ -81,6 +81,7 @@ set t_vb=
 
 " Show-off
 set display=lastline    " display as much as possible of the last line
+set laststatus=2        " always show status line
 set number              " show line numbers
 set relativenumber      " show relative line numbers
 set ruler               " show the cursor position
@@ -89,32 +90,27 @@ set showmode            " if in I, R or V, put a msg on the last line
 set showcmd             " show (partial) command in status line
 
 " Miscellaneous
+set autoread            " automatically reload files if not changed inside vim
 set backspace=indent,eol,start  " backspace over everything
 set confirm             " raise a dialog instead of failing
+set nofoldenable        " folds are open by default
+set hidden              " buffers become hidden when they are abandoned
 set nojoinspaces        " never insert two spaces on a join command
+set nolangremap         " langmap won't apply to chars resulting from a mapping
+set lazyredraw          " do not redraw while executing macros, registers, etc.
 set nrformats=alpha,hex,bin  " C-A, C-X apply to alphabet, hexadecimal, binary
 set splitright          " put new window to the right of current one
 set notimeout ttimeout ttimeoutlen=100  " time out on key codes only
-set ttyfast             " fast terminal connection
+set ttyfast             " assume fast terminal connection
 set virtualedit=block   " allow virtual editing in visual block mode
-set lazyredraw          " do not redraw while executing macros, registers, etc.
-set laststatus=2        " always show status line
-set nolangremap         " langmap won't apply to chars resulting from a mapping
-set nofoldenable        " disable folding
-set hidden              " buffers become hidden when they are abandoned
-set autoread            " automatically reload files not changed inside vim
 
 " Miscellaneous Mappings
 cnoremap w!! w !sudo tee >/dev/null %
-inoremap <C-u> <C-g>u<C-u>
-nnoremap & :&&<CR>
-xnoremap & :&&<CR>
-nnoremap Y y$
 nnoremap <silent> <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap gV `[v`]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vimrc - Indentation - functions
+" Indentation - functions
 "
 " To indent purely with hard tabs, call '*Hard'.
 " To use spaces for all indentation, call '*Soft'.
@@ -160,44 +156,71 @@ augroup Vimrc_indent
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" gruvbox
-let g:gruvbox_bold=0
-let g:gruvbox_italic=0
+" Plugins
+
+call plug#begin()
+""""""""""""""""""""""""""""""
+" General
+
+Plug 'morhetz/gruvbox'
 let g:gruvbox_contrast_dark='hard'
-set termguicolors
-set background=dark
-syntax enable
-colorscheme gruvbox
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" jedi-vim
-let g:jedi#show_call_signatures=0
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" supertab
+
+Plug 'ervandew/supertab'
 let g:SuperTabNoCompleteAfter=['^', ',', '\s', ';', '=', '[', ']', '(', ')', '{', '}']
 let g:SuperTabLongestEnhanced=1
 let g:SuperTabLongestHighlight=1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" tagbar
+
+Plug 'majutsushi/tagbar'
 nnoremap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus=1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" targets.vim
+
+Plug 'wellle/targets.vim'
 " Prefer multiline targets around cursor over distant targets within cursor line
 let g:targets_seekRanges='cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-airline
+
+Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_idx_mode=1
-let g:airline#extensions#tabline#fnamemod=':t'
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-latex-live-preview
-if (system('uname') =~ 'darwin')
-  let g:livepreview_previewer='open -a Preview'
-endif
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-surround
+
+Plug 'junegunn/vim-easy-align'
+
+Plug 'tpope/vim-commentary'
+
+Plug 'tpope/vim-repeat'
+
+Plug 'mhinz/vim-startify',
+
+Plug 'tpope/vim-surround'
 if !exists('g:surround_no_mappings') || ! g:surround_no_mappings
   autocmd Vimrc BufEnter \[BufExplorer\] unmap ds
   autocmd Vimrc BufLeave \[BufExplorer\] nmap ds <Plug>Dsurround
 endif
+
+""""""""""""""""""""""""""""""
+" TeX
+
+" Plug 'lervag/vimtex'
+
+" Plug 'xuhdev/vim-latex-live-preview'
+" if (system('uname') =~ 'darwin')
+"   let g:livepreview_previewer='open -a Preview'
+" endif
+
+""""""""""""""""""""""""""""""
+" Version Control
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'mhinz/vim-signify'
+
+""""""""""""""""""""""""""""""
+call plug#end()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Cololo
+
+set background=dark
+set termguicolors
+syntax enable
+colorscheme gruvbox
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""

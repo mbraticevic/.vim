@@ -4,14 +4,16 @@ Vim configuration
 Does not support older versions of vim.
 It is recommended to have the latest `Huge` version, and run it on a terminal supporting [true color](https://gist.github.com/XVilka/8346728).
 
-1. Clone the repository
+1. Clone the repo.
    ```shell
-   % git clone --recursive https://github.com/traib/.vim.git ~/.vim
+   % git clone https://github.com/traib/.vim.git ~/.vim
    ```
 
-2. Use `setup.py` to update repo, install symlinks, and manage plugins
+2. Use `setup.py` to update the repo and install the configuration.
    ```shell
    % ~/.vim/setup.py
    ```
+   Run it periodically to perform these maintenance tasks automatically.
 
-   Run it periodically, as well as when the plugins list is modified, to perform the mentioned maintenance tasks automatically. Please see the source for more details.
+3. Use `vim-plug` commands (`:PlugInstall`, `:PlugUpdate`, `:PlugClean` etc.) to manage plugins.
+   The list of plugins is in the `vimrc`.
