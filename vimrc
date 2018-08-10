@@ -162,33 +162,18 @@ call plug#begin()
 """"""""""""""""""""""""""""""
 " General
 
-Plug 'morhetz/gruvbox'
-let g:gruvbox_contrast_dark='hard'
-
 Plug 'ervandew/supertab'
-let g:SuperTabNoCompleteAfter=['^', ',', '\s', ';', '=', '[', ']', '(', ')', '{', '}']
 let g:SuperTabLongestEnhanced=1
 let g:SuperTabLongestHighlight=1
 
-Plug 'majutsushi/tagbar'
-nnoremap <F8> :TagbarToggle<CR>
-let g:tagbar_autofocus=1
-
-Plug 'wellle/targets.vim'
-" Prefer multiline targets around cursor over distant targets within cursor line
-let g:targets_seekRanges='cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
-
-Plug 'vim-airline/vim-airline'
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#buffer_idx_mode=1
-
 Plug 'junegunn/vim-easy-align'
+
+Plug 'morhetz/gruvbox'
+let g:gruvbox_contrast_dark='hard'
 
 Plug 'tpope/vim-commentary'
 
 Plug 'tpope/vim-repeat'
-
-Plug 'mhinz/vim-startify',
 
 Plug 'tpope/vim-surround'
 if !exists('g:surround_no_mappings') || ! g:surround_no_mappings
@@ -196,22 +181,13 @@ if !exists('g:surround_no_mappings') || ! g:surround_no_mappings
   autocmd Vimrc BufLeave \[BufExplorer\] nmap ds <Plug>Dsurround
 endif
 
-""""""""""""""""""""""""""""""
-" TeX
+Plug 'vim-airline/vim-airline'
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#buffer_idx_mode=1
 
-" Plug 'lervag/vimtex'
-
-" Plug 'xuhdev/vim-latex-live-preview'
-" if (system('uname') =~ 'darwin')
-"   let g:livepreview_previewer='open -a Preview'
-" endif
-
-""""""""""""""""""""""""""""""
-" Version Control
-
-Plug 'tpope/vim-fugitive'
-
-Plug 'mhinz/vim-signify'
+Plug 'wellle/targets.vim'
+" Prefer multiline targets around cursor over distant targets within cursor line
+let g:targets_seekRanges='cr cb cB lc ac Ac lr lb ar ab lB Ar aB Ab AB rr ll rb al rB Al bb aa bB Aa BB AA'
 
 """"""""""""""""""""""""""""""
 call plug#end()
