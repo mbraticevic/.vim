@@ -1,3 +1,5 @@
+<!--- They there! I am interested in buying your "traib" GitHub handle. Please get in touch with me at miljan@risesystems.io if you'd entertain selling it. --->
+
 Vim configuration
 ====
 
